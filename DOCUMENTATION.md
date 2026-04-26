@@ -150,8 +150,8 @@ The project uses **Vite** with the **@crxjs/vite-plugin** to compile TypeScript 
 - `"all_frames": true` ensures it runs even in nested iframes.
 
 ### Permissions
-- `"storage"`: Used for `chrome.storage.local` (persisting playback speed per domain).
-- `"host_permissions": ["<all_urls>"]`: Required to inject content scripts on any page.
+- `"storage"`: Used for `chrome.storage.local` (persisting playback speed and volume per domain).
+- `"host_permissions": ["<all_urls>"]`: Required to inject content scripts on any page containing YouTube embeds. This provides the broad permission necessary to enhance videos across the entire web.
 
 ---
 
@@ -228,6 +228,9 @@ The central communication class. One instance per iframe.
 | `playbackQuality`          | `string`   | Current quality level (e.g., `hd1080`)            |
 | `videoId`                  | `string`   | YouTube video ID                                  |
 | `ccEnabled`                | `boolean`  | Whether closed captions are currently active       |
+| `volume`                   | `number`   | Current player volume (0-100)                     |
+| `muted`                    | `boolean`  | Whether the player is muted                       |
+| `playbackRate`             | `number`   | Current playback speed multiplier                  |
 
 **Player State Codes** (from YouTube API):
 | Code | Meaning    |
@@ -248,6 +251,8 @@ The central communication class. One instance per iframe.
 | `onPlaybackQualityChange` | Active quality changes                           |
 | `onVideoDataUpdate`       | Video ID is received                             |
 | `onCCChange`              | Closed caption state changes                     |
+| `onVolumeChange`          | Volume or mute state changes                     |
+| `onPlaybackRateChange`    | Playback speed changes                           |
 
 **Two message sources**:
 The `initListener()` method listens for `window.message` events from the iframe. It handles two types:
@@ -378,6 +383,7 @@ Handles persisting user preferences per domain using `chrome.storage.local`.
 ```typescript
 interface StorageData {
   playbackSpeed: number;   // default: 1
+  volumeLevel: number;     // default: 50
 }
 ```
 
