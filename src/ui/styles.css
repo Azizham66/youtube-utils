@@ -1,0 +1,174 @@
+.yt-embed-utilities-wrapper {
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* Let events pass through wrapper */
+}
+
+.yt-embed-utilities-wrapper * {
+  pointer-events: auto; /* Re-enable for children */
+}
+
+.ytu-overlay {
+  background: rgba(20, 20, 22, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 280px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.yt-embed-utilities-wrapper:hover .ytu-overlay,
+.ytu-overlay.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ytu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: grab;
+}
+
+.ytu-header:active {
+  cursor: grabbing;
+}
+
+.ytu-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.ytu-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ytu-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.ytu-btn:active {
+  transform: scale(0.95);
+}
+
+.ytu-btn.icon-btn {
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+}
+
+.ytu-slider-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.ytu-slider-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: space-between;
+}
+
+.ytu-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  outline: none;
+}
+
+.ytu-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.ytu-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.ytu-minimal-btn {
+  background: rgba(20, 20, 22, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+.ytu-minimal-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ytu-hidden {
+  display: none !important;
+}
+
+.ytu-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 11px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+}
+
+.ytu-select:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.ytu-select option {
+  background: #2a2a2a;
+  color: #fff;
+}
+
