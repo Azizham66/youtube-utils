@@ -11,6 +11,7 @@ export class PlayerController {
   public ccEnabled: boolean = false;
   public volume: number = 100;
   public muted: boolean = false;
+  public playbackRate: number = 1;
   
   public onStateChange?: (state: number) => void;
   public onTimeUpdate?: (time: number) => void;
@@ -19,6 +20,7 @@ export class PlayerController {
   public onVideoDataUpdate?: (videoId: string) => void;
   public onCCChange?: (enabled: boolean) => void;
   public onVolumeChange?: (volume: number, muted: boolean) => void;
+  public onPlaybackRateChange?: (rate: number) => void;
 
   constructor(iframe: HTMLIFrameElement) {
     this.iframe = iframe;
@@ -75,6 +77,12 @@ export class PlayerController {
               this.volume = newVol;
               this.muted = newMuted;
               this.onVolumeChange?.(this.volume, this.muted);
+            }
+          }
+          if (data.info.playbackRate !== undefined) {
+            if (this.playbackRate !== data.info.playbackRate) {
+              this.playbackRate = data.info.playbackRate;
+              this.onPlaybackRateChange?.(this.playbackRate);
             }
           }
         }

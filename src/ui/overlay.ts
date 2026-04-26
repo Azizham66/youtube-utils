@@ -112,6 +112,12 @@ export function createOverlay(controller: PlayerController): HTMLElement {
     setPlaybackSpeed(val);
   };
 
+  controller.onPlaybackRateChange = (rate) => {
+    speedSlider.value = rate.toString();
+    speedLabelVal.innerText = `${rate}x`;
+    setPlaybackSpeed(rate);
+  };
+
   // Set initial speed when injected
   setTimeout(() => controller.setPlaybackRate(initialSpeed), 1500);
 
@@ -131,9 +137,13 @@ export function createOverlay(controller: PlayerController): HTMLElement {
     if (isMuted) {
       controller.unMute();
       muteBtn.innerHTML = icons.volumeOn;
+      volSlider.value = controller.volume.toString();
+      volLabelVal.innerText = `${controller.volume}%`;
     } else {
       controller.mute();
       muteBtn.innerHTML = icons.volumeOff;
+      volSlider.value = '0';
+      volLabelVal.innerText = '0%';
     }
     isMuted = !isMuted;
   };
@@ -168,10 +178,17 @@ export function createOverlay(controller: PlayerController): HTMLElement {
   };
 
   controller.onVolumeChange = (volume, muted) => {
-    volSlider.value = volume.toString();
-    volLabelVal.innerText = `${volume}%`;
     isMuted = muted;
     muteBtn.innerHTML = muted ? icons.volumeOff : icons.volumeOn;
+    
+    if (muted) {
+      volSlider.value = '0';
+      volLabelVal.innerText = '0%';
+    } else {
+      volSlider.value = volume.toString();
+      volLabelVal.innerText = `${volume}%`;
+    }
+    
     // Also save it locally
     setVolumeLevel(volume);
   };
