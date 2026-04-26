@@ -2,6 +2,12 @@
 
 A professional, production-ready Chrome Extension that injects a sleek, glassmorphic control overlay onto any website containing embedded YouTube videos. Control playback, quality, volume, and more without interacting with the native YouTube UI.
 
+![Floating Menu](assets/screenshot_menu.png)
+*Floating control menu with quality and CC sync*
+
+![Minimized Gear Icon](assets/screenshot_gear.png)
+*Minimized draggable gear icon for quick access*
+
 ## Features
 
 - **Glassmorphic UI**: High-end, transparent design with blur effects and smooth animations.
