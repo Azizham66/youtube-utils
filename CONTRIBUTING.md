@@ -68,4 +68,4 @@ When reporting bugs, please include:
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the same MIT License that covers this project.
+By contributing, you agree that your contributions will be licensed under the same GNU General Public License v3.0 that covers this project.

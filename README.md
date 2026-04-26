@@ -2,7 +2,7 @@
 
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue.svg)](https://www.typescriptlang.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Vite](https://img.shields.io/badge/Built%20with-Vite-646CFF.svg)](https://vitejs.dev/)
 [![Version](https://img.shields.io/badge/Version-1.0.1-orange.svg)](https://github.com/Azizham66/youtube-utils/releases)
 
@@ -62,4 +62,4 @@ npm run build
 ```
 
 ## License
-This project is open-source and available under the MIT License.
+This project is open-source and available under the GNU General Public License v3.0.
