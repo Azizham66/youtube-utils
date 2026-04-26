@@ -1,5 +1,11 @@
 # YouTube Embedded Utilities
 
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
+[![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Vite](https://img.shields.io/badge/Built%20with-Vite-646CFF.svg)](https://vitejs.dev/)
+[![Version](https://img.shields.io/badge/Version-1.0.1-orange.svg)](https://github.com/Azizham66/youtube-utils/releases)
+
 A professional, production-ready Chrome Extension that injects a sleek, glassmorphic control overlay onto any website containing embedded YouTube videos. Control playback, quality, volume, and more without interacting with the native YouTube UI.
 
 ![Floating Menu](assets/screenshot_menu.png)
