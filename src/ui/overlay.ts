@@ -1,5 +1,5 @@
 import { PlayerController } from '../content/playerController';
-import { getPlaybackSpeed, setPlaybackSpeed } from '../utils/storage';
+import { getPlaybackSpeed, setPlaybackSpeed, getVolumeLevel, setVolumeLevel } from '../utils/storage';
 import './styles.css';
 
 const icons = {
@@ -146,7 +146,8 @@ export function createOverlay(controller: PlayerController): HTMLElement {
   const volLabelName = document.createElement('span');
   volLabelName.innerText = 'Volume';
   const volLabelVal = document.createElement('span');
-  volLabelVal.innerText = '100%';
+  const initialVolume = getVolumeLevel();
+  volLabelVal.innerText = `${initialVolume}%`;
   
   volLabel.appendChild(volLabelName);
   volLabel.appendChild(volLabelVal);
@@ -157,13 +158,26 @@ export function createOverlay(controller: PlayerController): HTMLElement {
   volSlider.min = '0';
   volSlider.max = '100';
   volSlider.step = '1';
-  volSlider.value = '100';
+  volSlider.value = initialVolume.toString();
 
   volSlider.oninput = (e) => {
     const val = parseInt((e.target as HTMLInputElement).value, 10);
     volLabelVal.innerText = `${val}%`;
     controller.setVolume(val);
+    setVolumeLevel(val);
   };
+
+  controller.onVolumeChange = (volume, muted) => {
+    volSlider.value = volume.toString();
+    volLabelVal.innerText = `${volume}%`;
+    isMuted = muted;
+    muteBtn.innerHTML = muted ? icons.volumeOff : icons.volumeOn;
+    // Also save it locally
+    setVolumeLevel(volume);
+  };
+
+  // Set initial volume when injected
+  setTimeout(() => controller.setVolume(initialVolume), 1500);
 
   volContainer.appendChild(volLabel);
   volContainer.appendChild(volSlider);

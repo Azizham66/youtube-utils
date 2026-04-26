@@ -9,6 +9,8 @@ export class PlayerController {
   public playbackQuality: string = '';
   public videoId: string = '';
   public ccEnabled: boolean = false;
+  public volume: number = 100;
+  public muted: boolean = false;
   
   public onStateChange?: (state: number) => void;
   public onTimeUpdate?: (time: number) => void;
@@ -16,6 +18,7 @@ export class PlayerController {
   public onPlaybackQualityChange?: (quality: string) => void;
   public onVideoDataUpdate?: (videoId: string) => void;
   public onCCChange?: (enabled: boolean) => void;
+  public onVolumeChange?: (volume: number, muted: boolean) => void;
 
   constructor(iframe: HTMLIFrameElement) {
     this.iframe = iframe;
@@ -63,6 +66,15 @@ export class PlayerController {
             if (this.videoId !== data.info.videoData.video_id) {
               this.videoId = data.info.videoData.video_id;
               this.onVideoDataUpdate?.(this.videoId);
+            }
+          }
+          if (data.info.volume !== undefined || data.info.muted !== undefined) {
+            const newVol = data.info.volume !== undefined ? data.info.volume : this.volume;
+            const newMuted = data.info.muted !== undefined ? data.info.muted : this.muted;
+            if (newVol !== this.volume || newMuted !== this.muted) {
+              this.volume = newVol;
+              this.muted = newMuted;
+              this.onVolumeChange?.(this.volume, this.muted);
             }
           }
         }

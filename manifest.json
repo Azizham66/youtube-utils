@@ -1,21 +1,23 @@
 {
   "manifest_version": 3,
   "name": "YouTube Embedded Utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Control embedded YouTube videos on any website with a floating overlay.",
-  "permissions": [
-    "storage"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "icons": {
+    "128": "public/icon.svg"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "js": ["src/content/index.ts"]
     },
     {
-      "matches": ["*://*.youtube.com/embed/*", "*://*.youtube-nocookie.com/embed/*"],
+      "matches": [
+        "*://*.youtube.com/embed/*",
+        "*://*.youtube-nocookie.com/embed/*"
+      ],
       "js": ["src/embed/embed_inject.ts"],
       "world": "MAIN",
       "run_at": "document_idle",
